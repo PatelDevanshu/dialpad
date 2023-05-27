@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+/* 
+*{
+    font-family: 'Roboto', sans-serif;
+} */
+
+.login, .register{
+    background-image: linear-gradient(to bottom, #ded9ee, #C0C0FF);
+    width: 18rem;
+    height: 32rem;
+    padding: 0.7rem;
+    display: block;
+    color: var(--main) !important;
+    position: absolute;
+}
+.htxt{
+    text-transform: uppercase;
+    text-shadow: 0.1rem 0.1rem #fff;    
+    color: #19891b;
+    margin: 0.8rem 0rem;
+}
+
+.pg{
+    /* height: 360px; */
+    border-radius: 1.5rem;
+    margin: 0.55rem;
+    filter: drop-shadow(0rem 0rem 0.3rem black);
+    background-color: #FFF;
+    padding: 0.8rem;
+    text-align: center;
+    position: relative;
+    /* overflow-y: scroll; */
+}
+/* .rg{
+    height: 360px;
+    overflow-y: scroll;
+
+} */
+.pg::-webkit-scrollbar{
+    display: none;
+}
+.pg .items{
+    padding: 0.5rem;
+    margin-top: 0.7rem;
+}
+
+.txtinp{
+    position: relative;
+}
+.txtinp input{
+    width: 12rem;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    color: var(--main) !important;
+    background-color: #c2bdff;
+    box-shadow: 0.9vh 1.3vh 0 #2c2c72;
+}
+.txtinp span{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: absolute;
+    left: 1.6rem;
+    pointer-events: none;
+    top: 0.9rem;
+    opacity: 0.5;
+    font-size: 1.3rem;
+    transition: 0.3s ease-in;
+}
+.txtinp input:valid ~ span,
+.txtinp input:focus ~ span{
+    color: rgb(152, 5, 150);
+    top: -0.5rem;
+    left: 1.1rem;
+    font-size: .8rem;
+    padding: 0.2rem;
+    opacity: 1;
+    border-radius: 0.2rem;
+    background-color: #c2bdff;
+}
+.txtinp input:focus,
+.txtinp input:valid{
+    outline: none;
+    box-shadow: 0.2rem 0.2rem 0.3rem #2c2c72;
+    transition:  all .3s ease-in;
+}
+
+.rgtxtinp{
+    position: relative;
+}
+.rgtxtinp input{
+    width: 12rem;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    color: var(--main) !important;
+    background-color: #c2bdff;
+    box-shadow: 0.9vh 1.3vh 0 #2c2c72;
+}
+.rgtxtinp span{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    position: absolute;
+    left: 1.6rem;
+    pointer-events: none;
+    top: 1.1rem;
+    opacity: 0.5;
+    font-size: 1rem;
+    transition: 0.3s ease-in;
+}
+
+
+.rgtxtinp input:valid ~ span,
+.rgtxtinp input:focus ~ span{
+    color: rgb(152, 5, 150);
+    top: -0.5rem;
+    left: 1.1rem;
+    font-size: .8rem;
+    padding: 0.2rem;
+    opacity: 1;
+    border-radius: 0.2rem;
+    background-color: #c2bdff;
+}
+.rgtxtinp input:focus,
+.rgtxtinp input:valid{
+    outline: none;
+    box-shadow: 0.2rem 0.2rem 0.3rem #2c2c72;
+    transition:  all .3s ease-in;
+}
+
+
+
+
+
+.pg .btn{
+    font-size: 1.1rem;
+    margin: 0.2rem;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    color: var(--main) !important;
+    background-image: linear-gradient(to right, #3bab3c 70%, transparent);
+}
+.pg .btn:hover{
+    cursor: pointer;
+}
+.links{
+    color: var(--main) !important;
+}
+.items .fp{
+    color: var(--main) !important;
+    font-size: 1rem;
+}
+.items .fptxt{
+    font-size: 1.2rem;
+}
+.items .rgfp{
+    font-size: 0.9rem;
+}
+
+.btncont{
+    margin: 0.5rem 0rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+.btncont button:active{
+    box-shadow: 0.1rem 0.2rem 0.3rem  black;
+    background-image: linear-gradient(to right, #19891b 70%, #3bab3c );
+    
+}
+.tags{
+    padding: 0.3rem;
+    margin: 0.3rem;
+    margin-top: 0.5rem;
+}
+.messages h3{
+    margin: 0.5rem;
+}
