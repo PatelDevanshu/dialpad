@@ -6,6 +6,7 @@ import { db, auth } from "../../firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -43,14 +44,31 @@ const Login = () => {
           console.log("We are loggin");
           navigate("/dial");
 
-          // const userColl = collection(db, "user");
-          // let userDoc = doc(userColl, userCredentials.user.uid);
-          // const onSnapshot = await getDoc(userDoc);
-          // if (onSnapshot.exists()) {
-          //   console.log("Document data:", onSnapshot.data());
-          // } else {
-          //   console.log("No such document!");
-          // }
+          const userColl = collection(db, "user");
+          let userDoc = doc(userColl, userCredentials.user.uid);
+          const onSnapshot = await getDoc(userDoc);
+          if (onSnapshot.exists()) {
+            console.log("Document data:", onSnapshot.data());
+            let userInfo = onSnapshot.data();
+            setUserName(userInfo.name);
+          } else {
+            console.log("No such document!");
+          }
+
+          // const q = query(
+          //   userColl,
+          //   where("id", "==", userCredentials.user.uid)
+          // );
+
+          // console.log("q : ", q);
+          // const querySnapshot = await getDocs(q);
+          // querySnapshot.forEach((doc) => {
+          //   console.log("We had our query");
+          //   // doc.data() is never undefined for query doc snapshots
+          //   console.log(doc.id, " => ", doc.data());
+          //   let d1 = doc.data();
+          //   console.log("d1", d1);
+          // });
         })
         .catch((error1) => {
           console.log(error1);
@@ -75,7 +93,7 @@ const Login = () => {
           display: submitted ? "" : "none",
         }}
       >
-        <h3>User {}! You have been Logged In</h3>
+        <h3>User {username}! You have been Logged In</h3>
       </div>
     );
   };

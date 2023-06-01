@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../Login/login.css";
 import { Link } from "react-router-dom";
 import { db, auth } from "../../firebase";
-import { addDoc, collection, doc, getDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 const Register = () => {
   const [name, setName] = useState("");
@@ -66,8 +66,10 @@ const Register = () => {
           // console.log("Result", result);
           console.log("id", result.user.uid);
 
-          console.log(`${result.user.uid}`);
+          let usrresultid = result.user.uid;
+          console.log("usrresultid", usrresultid);
           const userColl = collection(db, "user");
+          let userDoc = doc(userColl, usrresultid);
           const userData = {
             id: `${result.user.uid}`,
             name: name,
@@ -77,35 +79,22 @@ const Register = () => {
             gender: gender,
           };
 
-          // setDoc(userDoc, userData)
-          //   .then(() => {
-          //     console.log("Data has been set.");
-          //   })
-          //   .catch((error) => {
-          //     console.log("Error in firebase input : ", error);
-          //   });
-
-          var usercredid;
-
-          //Adding the new data into firestore database.
-          await addDoc(userColl, userData)
-            .then((userCredentials) => {
-              console.log("User Added : Credentials : ", userCredentials.id);
-              usercredid = userCredentials.id;
+          setDoc(userDoc, userData)
+            .then(() => {
+              console.log("Data has been set.");
             })
-            .catch((adderror) => {
-              console.log("Error in adding data : ", adderror);
+            .catch((error) => {
+              console.log("Error in firebase input : ", error);
             });
-          console.log("usercred id : ", usercredid);
 
           //REturn data from firestore database.
-          let userDoc = doc(userColl, usercredid);
-          const onSnapshot = await getDoc(userDoc);
-          if (onSnapshot.exists()) {
-            console.log("Document data:", onSnapshot.data());
-          } else {
-            console.log("No such document!");
-          }
+          // let userDoc = doc(userColl, usercredid);
+          // const onSnapshot = await getDoc(userDoc);
+          // if (onSnapshot.exists()) {
+          //   console.log("Document data:", onSnapshot.data());
+          // } else {
+          //   console.log("No such document!");
+          // }
         })
         .catch((e) => {
           console.log(e);
